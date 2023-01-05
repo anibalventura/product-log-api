@@ -18,6 +18,8 @@
     "rotating-file-stream": "^3.0.4"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.13",
+    "@types/express": "^4.17.15",
     "@types/node": "^18.11.9",
     "nodemon": "^2.0.20",
     "prisma": "^4.6.1",
