@@ -3,5 +3,7 @@ import * as dotenv from 'dotenv';
 dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
 
 export default {
-  port: process.env.PORT
-}
+  env: process.env.NODE_ENV,
+  port: process.env.PORT,
+  jwtSecret: process.env.JWT_SECRET,
+};
