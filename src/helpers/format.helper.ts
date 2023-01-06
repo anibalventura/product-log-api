@@ -6,4 +6,4 @@ export const formatDate = (date: Date): string => {
     padTo2Digits(date.getMonth() + 1),
     padTo2Digits(date.getDate()),
   ].join('-');
-}
+};
