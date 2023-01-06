@@ -3,7 +3,15 @@ import { JwtPayload } from './../../node_modules/@types/jsonwebtoken/index.d';
 import { NextFunction, Request, Response } from 'express';
 import httpStatus from 'http-status';
 
-const authMiddleware = (req: any, res: Response, next: NextFunction) => {
+interface RequestWithUser extends Request {
+  user: string | JwtPayload;
+}
+
+const authMiddleware = (
+  req: RequestWithUser,
+  res: Response,
+  next: NextFunction
+) => {
   const path = req.path;
 
   if (path === '/api/user/create' || path === '/api/user/login') {
