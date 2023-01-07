@@ -1,11 +1,18 @@
+import {
+  getUpdatePoints,
+  getUpdatePoint,
+  createUpdatePoint,
+  updateUpdatePoint,
+  deleteUpdatePoint,
+} from './../controllers/updatePoint.controller';
 import { Router } from 'express';
 
 const router = Router();
 
-router.get('/updatepoint', () => {});
-router.get('/updatepoint:id', () => {});
-router.post('/updatepoint', () => {});
-router.put('/updatepoint:id', () => {});
-router.delete('/updatepoint:id', () => {});
+router.get('/updatepoint', getUpdatePoints);
+router.get('/updatepoint:id', getUpdatePoint);
+router.post('/updatepoint', createUpdatePoint);
+router.put('/updatepoint:id', updateUpdatePoint);
+router.delete('/updatepoint:id', deleteUpdatePoint);
 
 export default router;

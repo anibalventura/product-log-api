@@ -3,12 +3,8 @@ import httpStatus from 'http-status';
 import prisma from '../helpers/db.helper';
 import { NextFunction, Request, Response } from 'express';
 import { hashPassword } from '../helpers/auth.helper';
-import {
-  Result,
-  ValidationError,
-  body,
-  validationResult,
-} from 'express-validator';
+import { body } from 'express-validator';
+import { handleInputErrors } from '../middlewares/error.middlewares';
 
 const requestValidators = [
   body('username')
@@ -23,12 +19,8 @@ const requestValidators = [
 
 export const createUser = [
   ...requestValidators,
+  handleInputErrors,
   async (req: Request, res: Response, next: NextFunction) => {
-    const reqErrors: Result<ValidationError> = validationResult(req);
-    if (!reqErrors.isEmpty()) {
-      return res.status(400).json({ errors: reqErrors.array() });
-    }
-
     try {
       const { username, password } = req.body;
       const isUserCreated = await prisma.user.findUnique({
@@ -59,12 +51,8 @@ export const createUser = [
 
 export const loginUser = [
   ...requestValidators,
+  handleInputErrors,
   async (req: Request, res: Response, next: NextFunction) => {
-    const reqErrors: Result<ValidationError> = validationResult(req);
-    if (!reqErrors.isEmpty()) {
-      return res.status(400).json({ errors: reqErrors.array() });
-    }
-
     try {
       const { username, password } = req.body;
       const user = await prisma.user.findUnique({
