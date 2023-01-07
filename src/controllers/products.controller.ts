@@ -1,8 +1,9 @@
+import { body } from 'express-validator';
 import { NextFunction, Request, Response } from 'express';
-import { handleInputErrors } from '../middlewares/error.middlewares';
+import errorMiddleware from '../middlewares/error.middleware';
 
 export const getProducts = [
-  handleInputErrors,
+  errorMiddleware,
   async (req: Request, res: Response, next: NextFunction) => {
     try {
     } catch (error) {
@@ -12,7 +13,7 @@ export const getProducts = [
 ];
 
 export const getProduct = [
-  handleInputErrors,
+  errorMiddleware,
   async (req: Request, res: Response, next: NextFunction) => {
     try {
     } catch (error) {
@@ -22,7 +23,7 @@ export const getProduct = [
 ];
 
 export const createProduct = [
-  handleInputErrors,
+  errorMiddleware,
   async (req: Request, res: Response, next: NextFunction) => {
     try {
     } catch (error) {
@@ -32,7 +33,7 @@ export const createProduct = [
 ];
 
 export const updateProduct = [
-  handleInputErrors,
+  errorMiddleware,
   async (req: Request, res: Response, next: NextFunction) => {
     try {
     } catch (error) {
@@ -42,7 +43,7 @@ export const updateProduct = [
 ];
 
 export const deleteProduct = [
-  handleInputErrors,
+  errorMiddleware,
   async (req: Request, res: Response, next: NextFunction) => {
     try {
     } catch (error) {

@@ -7,7 +7,7 @@ import updateRoutes from './routes/update.routes';
 import updatepointRoutes from './routes/updatepoint.routes';
 import loggerMiddleware from './middlewares/logger.middleware';
 import authMiddleware from './middlewares/auth.middleware';
-import { errorMiddleware } from './middlewares/error.middlewares';
+import errorMiddleware from './middlewares/error.middleware';
 import userRoutes from './routes/user.routes';
 
 const app = express();

@@ -4,7 +4,7 @@ import prisma from '../helpers/db.helper';
 import { NextFunction, Request, Response } from 'express';
 import { hashPassword } from '../helpers/auth.helper';
 import { body } from 'express-validator';
-import { handleInputErrors } from '../middlewares/error.middlewares';
+import errorMiddleware from '../middlewares/error.middleware';
 
 const requestValidators = [
   body('username')
@@ -19,7 +19,7 @@ const requestValidators = [
 
 export const createUser = [
   ...requestValidators,
-  handleInputErrors,
+  errorMiddleware,
   async (req: Request, res: Response, next: NextFunction) => {
     try {
       const { username, password } = req.body;
@@ -51,7 +51,7 @@ export const createUser = [
 
 export const loginUser = [
   ...requestValidators,
-  handleInputErrors,
+  errorMiddleware,
   async (req: Request, res: Response, next: NextFunction) => {
     try {
       const { username, password } = req.body;
