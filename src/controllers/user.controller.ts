@@ -15,6 +15,7 @@ export const createUser = [
       });
 
       if (isUserCreated) {
+        req.body.password = '********'; // Hide password in logs.
         return res
           .status(httpStatus.CONFLICT)
           .json({ message: 'Username already exists' });
@@ -46,6 +47,7 @@ export const loginUser = [
       });
 
       if (!user) {
+        req.body.password = '********'; // Hide password in logs.
         return res
           .status(httpStatus.UNAUTHORIZED)
           .json({ message: 'Invalid credentials' });
