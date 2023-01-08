@@ -35,6 +35,7 @@ export const getProducts = [
 // PATH: /product/:id
 // DESC: Get a product.
 export const getProduct = [
+  ...productValidators.getProduct,
   async (req: RequestWithProduct, res: Response, next: NextFunction) => {
     try {
       const { id } = req.params;
