@@ -5,6 +5,9 @@ import { NextFunction, Request, Response } from 'express';
 import { hashPassword } from '../helpers/auth.helper';
 import userValidators from '../validators/user.validators';
 
+// METHOD: POST
+// PATH: /user/create
+// DESC: Create a user.
 export const createUser = [
   ...userValidators.createUser,
   async (req: Request, res: Response, next: NextFunction) => {
@@ -37,6 +40,9 @@ export const createUser = [
   },
 ];
 
+// METHOD: POST
+// PATH: /user/login
+// DESC: Login a user.
 export const loginUser = [
   ...userValidators.loginUser,
   async (req: Request, res: Response, next: NextFunction) => {
