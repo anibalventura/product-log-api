@@ -3,23 +3,10 @@ import httpStatus from 'http-status';
 import prisma from '../helpers/db.helper';
 import { NextFunction, Request, Response } from 'express';
 import { hashPassword } from '../helpers/auth.helper';
-import { body } from 'express-validator';
-import errorMiddleware from '../middlewares/error.middleware';
-
-const requestValidators = [
-  body('username')
-    .isString()
-    .isLength({ min: 3, max: 20 })
-    .withMessage('Username must be between 3 and 20 characters'),
-  body('password')
-    .isString()
-    .isLength({ min: 8, max: 20 })
-    .withMessage('Password must be between 8 and 20 characters'),
-];
+import userValidators from '../validators/user.validators';
 
 export const createUser = [
-  ...requestValidators,
-  errorMiddleware,
+  ...userValidators.createUser,
   async (req: Request, res: Response, next: NextFunction) => {
     try {
       const { username, password } = req.body;
@@ -50,8 +37,7 @@ export const createUser = [
 ];
 
 export const loginUser = [
-  ...requestValidators,
-  errorMiddleware,
+  ...userValidators.loginUser,
   async (req: Request, res: Response, next: NextFunction) => {
     try {
       const { username, password } = req.body;
