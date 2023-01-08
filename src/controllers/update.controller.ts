@@ -1,4 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
+import updateValidators from '../validators/update.validators';
 
 export const getUpdates = [
   async (req: Request, res: Response, next: NextFunction) => {
@@ -19,6 +20,7 @@ export const getUpdate = [
 ];
 
 export const createUpdate = [
+  ...updateValidators.createUpdate,
   async (req: Request, res: Response, next: NextFunction) => {
     try {
     } catch (error) {
@@ -28,6 +30,7 @@ export const createUpdate = [
 ];
 
 export const updateUpdate = [
+  ...updateValidators.updateUpdate,
   async (req: Request, res: Response, next: NextFunction) => {
     try {
     } catch (error) {
