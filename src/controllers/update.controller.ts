@@ -1,8 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
-import errorMiddleware from '../middlewares/error.middleware';
 
 export const getUpdates = [
-  errorMiddleware,
   async (req: Request, res: Response, next: NextFunction) => {
     try {
     } catch (error) {
@@ -12,7 +10,6 @@ export const getUpdates = [
 ];
 
 export const getUpdate = [
-  errorMiddleware,
   async (req: Request, res: Response, next: NextFunction) => {
     try {
     } catch (error) {
@@ -22,7 +19,6 @@ export const getUpdate = [
 ];
 
 export const createUpdate = [
-  errorMiddleware,
   async (req: Request, res: Response, next: NextFunction) => {
     try {
     } catch (error) {
@@ -32,7 +28,6 @@ export const createUpdate = [
 ];
 
 export const updateUpdate = [
-  errorMiddleware,
   async (req: Request, res: Response, next: NextFunction) => {
     try {
     } catch (error) {
@@ -42,7 +37,6 @@ export const updateUpdate = [
 ];
 
 export const deleteUpdate = [
-  errorMiddleware,
   async (req: Request, res: Response, next: NextFunction) => {
     try {
     } catch (error) {
