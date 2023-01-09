@@ -6,10 +6,10 @@
   "license": "MIT",
   "main": "server.ts",
   "scripts": {
-    "dev": "NODE_ENV=development nodemon src/server.ts",
-    "prisma-studio-dev": "dotenv -e .env.development npx prisma studio",
-    "prod": "NODE_ENV=production ts-node src/server.ts",
-    "prisma-studio-prod": "dotenv -e .env.production npx prisma studio"
+    "start:dev": "NODE_ENV=development nodemon src/server.ts",
+    "start:prod": "NODE_ENV=production ts-node src/server.ts",
+    "prisma-studio:dev": "dotenv -e .env.development npx prisma studio",
+    "prisma-studio:prod": "dotenv -e .env.production npx prisma studio"
   },
   "dependencies": {
     "@prisma/client": "^4.6.1",
