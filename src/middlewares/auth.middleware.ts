@@ -18,6 +18,12 @@ const authMiddleware = [
     .notEmpty()
     .withMessage('Authorization header is required'),
   (req: RequestWithUser, res: Response, next: NextFunction) => {
+    const path = req.path;
+    if (path === '/api/user/create' || path === '/api/user/login') {
+      next();
+      return;
+    }
+
     const reqErrors: Result<ValidationError> = validationResult(req);
     if (!reqErrors.isEmpty()) {
       return res
@@ -26,12 +32,6 @@ const authMiddleware = [
     }
 
     try {
-      const path = req.path;
-      if (path === '/api/user/create' || path === '/api/user/login') {
-        next();
-        return;
-      }
-
       const [, token]: string[] = req.headers.authorization.split(' ');
       const user: string | JwtPayload = verifyJWT(token);
 

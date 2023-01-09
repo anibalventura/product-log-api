@@ -6,7 +6,7 @@ import { hashPassword } from '../helpers/auth.helper';
 import userValidators from '../validators/user.validators';
 
 // METHOD: POST
-// PATH: /user/create
+// PATH: /user
 // DESC: Create a user.
 export const createUser = [
   ...userValidators.createUser,
@@ -74,6 +74,34 @@ export const loginUser = [
 
       req.body.password = '********'; // Hide password in logs.
       res.status(httpStatus.OK).json({ token });
+    } catch (error) {
+      next(error);
+    }
+  },
+];
+
+// METHOD: DELETE
+// PATH: /user/:username
+// DESC: Delete a user.
+export const deleteUser = [
+  async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const { username } = req.params;
+      const user = await prisma.user.findUnique({
+        where: { username },
+      });
+
+      if (!user) {
+        return res
+          .status(httpStatus.NOT_FOUND)
+          .json({ message: 'Username not found' });
+      }
+
+      await prisma.user.delete({
+        where: { username },
+      });
+
+      res.status(httpStatus.OK).json({ message: 'User deleted successfully' });
     } catch (error) {
       next(error);
     }
