@@ -7,12 +7,13 @@ import {
 } from './../controllers/update.controller';
 import { Router } from 'express';
 
-const router = Router();
+const router: Router = Router();
+const baseRoute: string = '/update';
 
-router.get('/update', getUpdates);
-router.get('/update/:id', getUpdate);
-router.post('/update', createUpdate);
-router.put('/update/:id', updateUpdate);
-router.delete('/update/:id', deleteUpdate);
+router.get(`${baseRoute}`, getUpdates);
+router.get(`${baseRoute}/:id`, getUpdate);
+router.post(`${baseRoute}`, createUpdate);
+router.put(`${baseRoute}/:id`, updateUpdate);
+router.delete(`${baseRoute}/:id`, deleteUpdate);
 
 export default router;

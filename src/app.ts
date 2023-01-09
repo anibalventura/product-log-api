@@ -24,13 +24,13 @@ app.use(express.urlencoded({ extended: true })); // For parsing application/x-ww
 app.use(authMiddleware);
 
 // Routes.
-app.get('/api', (_: Request, res: Response) =>
+app.get(config.baseRoute, (_: Request, res: Response) =>
   res.send({ app: 'ChangeLog API' })
 );
-app.use('/api', productRoutes);
-app.use('/api', updateRoutes);
-app.use('/api', updatepointRoutes);
-app.use('/api', userRoutes);
+app.use(config.baseRoute, productRoutes);
+app.use(config.baseRoute, updateRoutes);
+app.use(config.baseRoute, updatepointRoutes);
+app.use(config.baseRoute, userRoutes);
 
 // Exit middleware's.
 app.use(errorMiddleware);

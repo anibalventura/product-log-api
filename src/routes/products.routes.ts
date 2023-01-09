@@ -7,12 +7,13 @@ import {
   updateProduct,
 } from '../controllers/products.controller';
 
-const router = Router();
+const router: Router = Router();
+const baseRoute: string = '/product';
 
-router.get('/product', getProducts);
-router.get('/product/:id', getProduct);
-router.post('/product', createProduct);
-router.put('/product/:id', updateProduct);
-router.delete('/product/:id', deleteProduct);
+router.get(`${baseRoute}`, getProducts);
+router.get(`${baseRoute}/:id`, getProduct);
+router.post(`${baseRoute}`, createProduct);
+router.put(`${baseRoute}/:id`, updateProduct);
+router.delete(`${baseRoute}/:id`, deleteProduct);
 
 export default router;
