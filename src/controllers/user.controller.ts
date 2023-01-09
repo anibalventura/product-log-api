@@ -84,6 +84,7 @@ export const loginUser = [
 // PATH: /user/:username
 // DESC: Delete a user.
 export const deleteUser = [
+  ...userValidators.deleteUser,
   async (req: Request, res: Response, next: NextFunction) => {
     try {
       const { username } = req.params;
@@ -94,7 +95,7 @@ export const deleteUser = [
       if (!user) {
         return res
           .status(httpStatus.NOT_FOUND)
-          .json({ message: 'Username not found' });
+          .json({ message: 'Username not exist' });
       }
 
       await prisma.user.delete({
