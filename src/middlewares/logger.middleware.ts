@@ -12,7 +12,7 @@ const logFileStream: RotatingFileStream = createStream(
   formatDate(new Date()) + '.log',
   {
     interval: '1d', // Rotate daily.
-    path: path.join('../', 'logs'),
+    path: path.join('./', 'logs'),
   }
 );
 
