@@ -9,7 +9,7 @@
     "build": "tsc -p tsconfig.json",
     "test": "NODE_ENV=development jest",
     "dev": "NODE_ENV=development nodemon src/server.ts",
-    "prod": "NODE_ENV=production ts-node src/server.ts",
+    "prod": "NODE_ENV=production node dist/server.js",
     "prisma-studio:dev": "dotenv -e .env.development npx prisma studio",
     "prisma-studio:prod": "dotenv -e .env.production npx prisma studio"
   },
