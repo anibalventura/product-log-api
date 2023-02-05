@@ -10,10 +10,12 @@ import {
 const router: Router = Router();
 const baseRoute: string = '/product';
 
-router.get(`${baseRoute}`, getProducts);
-router.get(`${baseRoute}/:id`, getProduct);
-router.post(`${baseRoute}`, createProduct);
-router.put(`${baseRoute}/:id`, updateProduct);
-router.delete(`${baseRoute}/:id`, deleteProduct);
+router.route(`${baseRoute}`).get(getProducts).post(createProduct);
+
+router
+  .route(`${baseRoute}/:id`)
+  .get(getProduct)
+  .put(updateProduct)
+  .delete(deleteProduct);
 
 export default router;

@@ -10,10 +10,12 @@ import { Router } from 'express';
 const router: Router = Router();
 const baseRoute: string = '/update';
 
-router.get(`${baseRoute}`, getUpdates);
-router.get(`${baseRoute}/:id`, getUpdate);
-router.post(`${baseRoute}`, createUpdate);
-router.put(`${baseRoute}/:id`, updateUpdate);
-router.delete(`${baseRoute}/:id`, deleteUpdate);
+router.route(`${baseRoute}`).get(getUpdates).post(createUpdate);
+
+router
+  .route(`${baseRoute}/:id`)
+  .get(getUpdate)
+  .put(updateUpdate)
+  .delete(deleteUpdate);
 
 export default router;
