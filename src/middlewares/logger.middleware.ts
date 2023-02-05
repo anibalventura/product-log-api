@@ -1,7 +1,7 @@
 import morganBody, { IMorganBodyOptions } from 'morgan-body';
 import path from 'path';
 import { RotatingFileStream, createStream } from 'rotating-file-stream';
-import { formatDate } from '../helpers/format.helper';
+import moment from 'moment';
 
 const options: IMorganBodyOptions = {
   dateTimeFormat: 'iso',
@@ -9,7 +9,7 @@ const options: IMorganBodyOptions = {
 
 // Create a rotating write stream.
 const logFileStream: RotatingFileStream = createStream(
-  formatDate(new Date()) + '.log',
+  moment(new Date()).format('YYYY-MM-DD') + '.log',
   {
     interval: '1d', // Rotate daily.
     path: path.join('./', 'logs'),
