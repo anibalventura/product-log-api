@@ -46,7 +46,13 @@ export const getProduct = [
         },
       });
 
-      res.status(httpStatus.OK).json({ data: product });
+      if (product) {
+        res.status(httpStatus.OK).json({ data: product });
+      } else {
+        res.status(httpStatus.NOT_FOUND).json({
+          message: 'Product not found',
+        });
+      }
     } catch (error) {
       next(error);
     }
@@ -96,7 +102,13 @@ export const updateProduct = [
         },
       });
 
-      res.status(httpStatus.OK).json({ data: product });
+      if (product) {
+        res.status(httpStatus.OK).json({ data: product });
+      } else {
+        res.status(httpStatus.NOT_FOUND).json({
+          message: 'Product not found',
+        });
+      }
     } catch (error) {
       next(error);
     }
@@ -120,7 +132,13 @@ export const deleteProduct = [
         },
       });
 
-      res.status(httpStatus.OK).json({ data: product });
+      if (product) {
+        res.status(httpStatus.OK).json({ data: product });
+      } else {
+        res.status(httpStatus.NOT_FOUND).json({
+          message: 'Product not found',
+        });
+      }
     } catch (error) {
       next(error);
     }
