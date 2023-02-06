@@ -24,7 +24,7 @@ app.use(authMiddleware);
 
 // Routes.
 app.get(config.baseRoute, (_: Request, res: Response) =>
-  res.send({ app: 'ChangeLog API' })
+  res.send({ app: 'Product Log API' })
 );
 app.use(config.baseRoute, productRoutes);
 app.use(config.baseRoute, updateRoutes);
