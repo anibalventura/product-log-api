@@ -4,7 +4,6 @@ import config from './config';
 import cors from 'cors';
 import productRoutes from './routes/products.routes';
 import updateRoutes from './routes/update.routes';
-import updatepointRoutes from './routes/updatepoint.routes';
 import loggerMiddleware from './middlewares/logger.middleware';
 import authMiddleware from './middlewares/auth.middleware';
 import errorMiddleware from './middlewares/error.middleware';
@@ -29,7 +28,6 @@ app.get(config.baseRoute, (_: Request, res: Response) =>
 );
 app.use(config.baseRoute, productRoutes);
 app.use(config.baseRoute, updateRoutes);
-app.use(config.baseRoute, updatepointRoutes);
 app.use(config.baseRoute, userRoutes);
 
 // Exit middleware's.
