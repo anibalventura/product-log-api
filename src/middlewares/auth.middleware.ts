@@ -19,7 +19,7 @@ const authMiddleware = [
     .withMessage('Authorization header is required'),
   (req: RequestWithUser, res: Response, next: NextFunction) => {
     const path = req.path;
-    if (path === '/api/user/create' || path === '/api/user/login') {
+    if (path === '/api/user' || path === '/api/user/login') {
       next();
       return;
     }
