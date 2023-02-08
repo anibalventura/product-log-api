@@ -27,7 +27,7 @@ CRUD API for product updates. Built with NodeJS/Express, TypeScript and Prisma a
 Prerequisites:
 
 - [NodeJS](https://nodejs.org/en/) & [NPM](https://www.npmjs.com/)
-- Register on [Render](https://render.com/) and then create a free PSQL DB.
+- Register on [Render](https://render.com/) and then create a free PostgreSQL DB.
 
 ### Build & Run
 
