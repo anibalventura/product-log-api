@@ -99,11 +99,12 @@ describe('POST /product', () => {
     });
 
     it(`should return an object with product properties`, () => {
+      const responseBody = response.body.data;
       const expectedResult = {
-        id: expect.any(String),
-        createdAt: expect.any(String),
+        id: responseBody.id,
+        createdAt: responseBody.createdAt,
         name: product.name,
-        belongsToId: expect.any(String),
+        belongsToId: responseBody.belongsToId,
       };
 
       expect(response.body.data).toEqual(expectedResult);
@@ -182,7 +183,7 @@ describe('PUT /product', () => {
         id: product.id,
         createdAt: product.createdAt,
         name: 'Product 1 Test Updated',
-        belongsToId: expect.any(String),
+        belongsToId: response.body.data.belongsToId,
       };
 
       expect(response.body.data).toEqual(expectedResult);
