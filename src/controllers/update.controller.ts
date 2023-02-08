@@ -49,7 +49,13 @@ export const getUpdate = [
         },
       });
 
-      res.status(httpStatus.OK).json({ data: update });
+      if (update) {
+        res.status(httpStatus.OK).json({ data: update });
+      } else {
+        res.status(httpStatus.NOT_FOUND).json({
+          message: 'Update not found',
+        });
+      }
     } catch (error) {
       next(error);
     }
