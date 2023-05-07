@@ -1,6 +1,5 @@
 import { JwtPayload } from './../../node_modules/@types/jsonwebtoken/index.d';
 import * as bcrypt from 'bcrypt';
-import config from '../config';
 import jwt from 'jsonwebtoken';
 
 export const createJWT = (data: any): string => {
@@ -8,7 +7,7 @@ export const createJWT = (data: any): string => {
     return 'No data provided';
   }
 
-  return jwt.sign(data, config.jwtSecret);
+  return jwt.sign(data, process.env.JWT_SECRET);
 };
 
 export const verifyJWT = (token: string | undefined): string | JwtPayload => {
@@ -16,7 +15,7 @@ export const verifyJWT = (token: string | undefined): string | JwtPayload => {
     return 'No token provided';
   }
 
-  return jwt.verify(token, config.jwtSecret);
+  return jwt.verify(token, process.env.JWT_SECRET);
 };
 
 export const comparePassword = (

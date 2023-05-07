@@ -1,9 +1,8 @@
 import app from './app';
-import config from './config';
 
 // Start server.
-app.listen(3000, () => {
+app.listen(process.env.PORT, () => {
   console.log(
-    `Server running with ${config.env} environment on http://localhost:${config.port}/api`
+    `Server running with ${process.env.NODE_ENV} environment on http://localhost:${process.env.PORT}/api`
   );
 });
