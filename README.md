@@ -26,14 +26,14 @@ CRUD API for product updates. Built with NodeJS/Express, TypeScript and Prisma a
 
 Prerequisites:
 
-- [NodeJS](https://nodejs.org/en/) & [NPM](https://www.npmjs.com/)
-- Register on [Render](https://render.com/) and then create a free PostgreSQL DB.
+- [NodeJS](https://nodejs.org/en/)
+- [NPM](https://www.npmjs.com/)
 
 ### Build & Run
 
 1. Clone and open the project on [Visual Studio Code](https://code.visualstudio.com/) or via terminal.
 2. Install dependencies running `npm install`
-3. Add DB connection string from [Render](https://render.com/) on `DATABASE_URL` variable to the corresponding `.env` file and on `./prisma/schema.prisma` datasource url.
+3. Add DB connection string on `DATABASE_URL` variable to the corresponding `.env` file and on `./prisma/schema.prisma` datasource url.
 4. Run prisma migrations with `npx prisma migrate dev --name init`
 5. Run the project with `npm run dev`
 6. Create a new user and use the returned token as `Bearer Token` for authentication.
